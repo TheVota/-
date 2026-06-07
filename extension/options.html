@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>&#12406;&#12356;&#12377;&#12413;&#12387;&#65281;&#12473;&#12465;&#12472;&#12517;&#12540;&#12523;&#35373;&#23450;</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="settings">
+      <header class="settings-header">
+        <div>
+          <h1>&#12406;&#12356;&#12377;&#12413;&#12387;&#65281;&#12473;&#12465;&#12472;&#12517;&#12540;&#12523;</h1>
+          <p>&#34920;&#31034;&#12377;&#12427;&#12513;&#12531;&#12496;&#12540;&#12434;&#36984;&#25246;</p>
+        </div>
+        <div class="actions">
+          <button id="selectAll" type="button">&#20840;&#36984;&#25246;</button>
+          <button id="clearAll" type="button">&#20840;&#35299;&#38500;</button>
+        </div>
+      </header>
+
+      <section class="group">
+        <div class="group-title">
+          <h2>JP</h2>
+          <span id="jpCount"></span>
+        </div>
+        <div id="jpMembers" class="member-grid"></div>
+      </section>
+
+      <section class="group">
+        <div class="group-title">
+          <h2>EN</h2>
+          <span id="enCount"></span>
+        </div>
+        <div id="enMembers" class="member-grid"></div>
+      </section>
+
+      <p id="status" class="status" aria-live="polite"></p>
+    </main>
+
+    <script src="members.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

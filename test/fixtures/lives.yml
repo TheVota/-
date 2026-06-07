@@ -1,0 +1,48 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_1:
+  title: TestLive1
+  start_at: 2020-03-27 00:00:00
+  channel: test_1
+  room: test_1
+
+test_2:
+  title: TestLive2
+  start_at: 2020-03-27 00:00:00
+  channel: test_1
+  room: test_2
+  duration: 1500
+
+test_3:
+  title: TestLive3
+  start_at: 2020-03-27 00:05:00
+  channel: test_1
+  room: test_3
+  duration: 1500
+  video: test_1
+
+test_4:
+  title: TestLive4
+  start_at: 2020-03-27 00:00:00
+  channel: test_1
+  room: test_4
+
+test_5:
+  title: TestLive5
+  start_at: 2120-03-27 00:00:00
+  cover: TestCover5
+  channel: test_1
+  room: test_5
+
+test_6:
+  title: TestLive6
+  start_at: 2120-03-27 00:00:00
+  channel: test_1
+  room: test_6
+
+test_7:
+  title: TestLive7
+  start_at: 2020-03-27 00:05:00
+  channel: test_5
+  room: test_8
+  duration: 1500

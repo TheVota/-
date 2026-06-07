@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_1:
+  title: TestVideoTitle1
+  video: TestVideo1
+  duration: 1500
+  platform: youtube
+
+test_2:
+  title: TestVideoTitle2
+  video: TestVideo2
+  duration: 1000
+  platform: youtube

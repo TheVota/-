@@ -1,0 +1,26 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_1:
+  channel: TestChannel1
+  platform: youtube
+  member: test_1
+
+test_2:
+  channel: TestChannel2
+  platform: youtube
+  member: test_2
+
+test_3:
+  channel: TestChannel3
+  platform: youtube
+  member: test_2
+
+test_4:
+  channel: TestChannel4
+  platform: bilibili
+  member: test_2
+
+test_5:
+  channel: TestChannel5
+  platform: youtube
+  member: test_3

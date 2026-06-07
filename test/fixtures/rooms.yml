@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_1:
+  room: TestRoom1
+  platform: youtube
+
+test_2:
+  room: TestRoom2
+  platform: youtube
+
+test_3:
+  room: TestRoom3
+  platform: youtube
+
+test_4:
+  room: TestRoom4
+  platform: youtube
+
+test_5:
+  room: TestRoom5
+  platform: youtube
+
+test_6:
+  room: TestRoom6
+  platform: youtube
+
+test_7:
+  room: TestRoom7
+  platform: youtube
+
+test_8:
+  room: TestRoom8
+  platform: youtube

@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_1:
+  in_time: 0
+  out_time: 1500
+  live: test_3
+  arranges: test_1

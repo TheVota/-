@@ -1,0 +1,22 @@
+default: &default
+  lives_detect:
+    youtube:
+      - https://workername.username.workers.dev
+    twitch:
+      - worker: https://anotherworker.username.workers.dev
+        proxy: http://example.com:1234
+  lives_check:
+    youtube:
+      - https://workername2.username.workers.dev
+  members_track:
+    youtube:
+      - https://workername3.username.workers.dev
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
