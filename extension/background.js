@@ -44,7 +44,12 @@ async function refreshLiveBadge() {
     }
 
     const html = await response.text();
-    setBadge(countLiveStreams(html, new Set(selectedMemberIds)));
+    const selectedSet = new Set(selectedMemberIds);
+    const [youtubeCount, twitchCount] = await Promise.all([
+      Promise.resolve(countLiveStreams(html, selectedSet)),
+      countTwitchLiveStreams(selectedSet)
+    ]);
+    setBadge(youtubeCount + twitchCount);
   } catch (error) {
     console.error(error);
     setBadge(null);
@@ -61,12 +66,46 @@ function countLiveStreams(html, selectedMemberIds) {
   const cards = main.match(/<div class="v_r v_rect_l[\s\S]*?(?=<div class="v_r v_rect_l|<div class="cl footer_pager"|<div class="main_title"|$)/g) || [];
   return cards.filter((card) => {
     const channelId = getChannelId(card);
-    return card.includes("class=\"ls_now\"") && channelId && selectedMemberIds.has(channelId) && !isFreeChatCard(card);
+    return card.includes("class=\"ls_now\"") && channelId && isSelectedChannel(channelId, selectedMemberIds) && !isFreeChatCard(card);
   }).length;
 }
 
 function getChannelId(card) {
-  return card.match(/href="\/channel\/(UC[\w-]+)"/)?.[1] || null;
+  return card.match(/href="\/channel\/(UC[\w-]+)"/)?.[1] || getTwitchLogin(card);
+}
+
+function getTwitchLogin(card) {
+  const login = card.match(/href="https?:\/\/(?:www\.)?twitch\.tv\/(?!videos\/)([A-Za-z0-9_]+)/)?.[1];
+  return login ? login.toLowerCase() : null;
+}
+
+function isSelectedChannel(channelId, selectedMemberIds) {
+  const memberId = VSPO_CHANNEL_MEMBER_ID_MAP[channelId.toLowerCase()] || channelId;
+  return selectedMemberIds.has(memberId);
+}
+
+async function countTwitchLiveStreams(selectedMemberIds) {
+  const members = VSPO_MEMBERS
+    .map((member) => ({
+      ...member,
+      twitchLogin: (member.ids || []).find((id) => !id.startsWith("UC"))
+    }))
+    .filter((member) => member.twitchLogin && selectedMemberIds.has(member.id));
+
+  const results = await Promise.allSettled(members.map((member) => isTwitchLive(member.twitchLogin)));
+  return results.filter((result) => result.status === "fulfilled" && result.value).length;
+}
+
+async function isTwitchLive(login) {
+  const response = await fetch(getTwitchThumbnail(login.toLowerCase()), { method: "HEAD", cache: "no-store" });
+  if (!response.ok) return false;
+
+  const contentLength = Number(response.headers.get("content-length")) || 0;
+  return contentLength > 3000;
+}
+
+function getTwitchThumbnail(login) {
+  return `https://static-cdn.jtvnw.net/previews-ttv/live_user_${login}-320x180.jpg`;
 }
 
 function isFreeChatCard(card) {

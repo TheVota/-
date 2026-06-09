@@ -51,8 +51,9 @@ async function refresh() {
 
     const liveItems = parseStreams(liveHtml, "live").filter((item) => item.isLive);
     const scheduledItems = parseStreams(scheduledHtml, "scheduled").filter((item) => !item.isLive);
+    const twitchLiveItems = await fetchTwitchLiveItems();
 
-    state.live = liveItems.filter(shouldShowStream);
+    state.live = mergeStreams(liveItems, twitchLiveItems).filter(shouldShowStream);
     state.scheduled = scheduledItems.filter(shouldShowStream).slice(0, 20);
     updateActionBadge(state.live.length);
     updatedAt.textContent = `${new Intl.DateTimeFormat("ja-JP", {
@@ -88,10 +89,70 @@ function parseStreams(html, status) {
     .filter(Boolean);
 }
 
+async function fetchTwitchLiveItems() {
+  const members = getSelectedTwitchMembers();
+  const results = await Promise.allSettled(members.map(fetchTwitchLiveItem));
+  return results
+    .filter((result) => result.status === "fulfilled" && result.value)
+    .map((result) => result.value);
+}
+
+function getSelectedTwitchMembers() {
+  return VSPO_MEMBERS
+    .map((member) => ({
+      ...member,
+      twitchLogin: (member.ids || []).find((id) => !id.startsWith("UC"))
+    }))
+    .filter((member) => member.twitchLogin && state.selectedMemberIds.has(member.id));
+}
+
+async function fetchTwitchLiveItem(member) {
+  const login = member.twitchLogin.toLowerCase();
+  const thumbnail = getTwitchThumbnail(login);
+  const isLive = await isTwitchPreviewLive(thumbnail);
+  if (!isLive) return null;
+
+  return {
+    id: login,
+    channelId: login,
+    platform: "twitch",
+    status: "live",
+    isLive: true,
+    title: `${member.name} - Twitch`,
+    member: member.name,
+    thumbnail,
+    meta: "Twitch配信中",
+    url: `https://www.twitch.tv/${login}`
+  };
+}
+
+async function isTwitchPreviewLive(thumbnail) {
+  const response = await fetch(thumbnail, { method: "HEAD", cache: "no-store" });
+  if (!response.ok) return false;
+
+  const contentLength = Number(response.headers.get("content-length")) || 0;
+  return contentLength > 3000;
+}
+
+function getTwitchThumbnail(login) {
+  return `https://static-cdn.jtvnw.net/previews-ttv/live_user_${login}-320x180.jpg`;
+}
+
+function mergeStreams(...streamGroups) {
+  const streams = streamGroups.flat();
+  const seen = new Set();
+  return streams.filter((stream) => {
+    const key = `${stream.platform}:${stream.id}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function parseCard(card, status) {
-  const id = getVideoId(card);
+  const stream = getStream(card);
   const channelId = getChannelId(card);
-  if (!id || !channelId) return null;
+  if (!stream || !channelId) return null;
 
   const titleLink = card.querySelector(".v_title");
   const channelLink = card.querySelector(".c_title");
@@ -104,31 +165,74 @@ function parseCard(card, status) {
   const isLive = status === "live" && Boolean(card.querySelector(".ls_now"));
 
   return {
-    id,
+    id: stream.id,
     channelId,
+    platform: stream.platform,
     status,
     isLive,
     title: clean(titleLink?.getAttribute("title") || titleLink?.textContent || "Untitled"),
     member: clean(channelLink?.getAttribute("title") || channelLink?.textContent || "VSPO!"),
-    thumbnail: thumb?.src || `https://i.ytimg.com/vi/${id}/mqdefault.jpg`,
+    thumbnail: thumb?.src || stream.thumbnail,
     meta: clean([concurrent, formatRelativeTime(startsAt) || dateText].filter(Boolean).join(" / ")),
-    url: `https://www.youtube.com/watch?v=${id}`
+    url: stream.url
   };
 }
 
-function getVideoId(card) {
+function getStream(card) {
+  const link = getStreamLink(card);
+  const youtubeId = getYouTubeVideoId(card, link);
+  if (youtubeId) {
+    return {
+      id: youtubeId,
+      platform: "youtube",
+      thumbnail: `https://i.ytimg.com/vi/${youtubeId}/mqdefault.jpg`,
+      url: `https://www.youtube.com/watch?v=${youtubeId}`
+    };
+  }
+
+  const twitchLogin = getTwitchLogin(link);
+  if (twitchLogin) {
+    return {
+      id: twitchLogin,
+      platform: "twitch",
+      thumbnail: getTwitchThumbnail(twitchLogin),
+      url: `https://www.twitch.tv/${twitchLogin}`
+    };
+  }
+
+  return null;
+}
+
+function getStreamLink(card) {
+  const href = card.querySelector(".v_title[href], a[href*='youtube.com/watch'], a[href*='youtu.be/'], a[href*='twitch.tv/']")?.getAttribute("href") || "";
+  return href ? new URL(href, "https://vtuber-live.net").href : "";
+}
+
+function getYouTubeVideoId(card, link) {
   const classId = [...card.classList]
     .map((name) => name.match(/^vr-([A-Za-z0-9_-]{11})$/)?.[1])
     .find(Boolean);
   if (classId) return classId;
+
+  const linkId = link.match(/[?&]v=([A-Za-z0-9_-]{11})/)?.[1] || link.match(/youtu\.be\/([A-Za-z0-9_-]{11})/)?.[1];
+  if (linkId) return linkId;
 
   const imageId = card.querySelector("img[src*='i.ytimg.com/vi/']")?.src.match(/\/vi\/([A-Za-z0-9_-]{11})\//)?.[1];
   return imageId || null;
 }
 
 function getChannelId(card) {
-  const href = card.querySelector(".c_title[href*='/channel/']")?.getAttribute("href") || "";
-  return href.match(/\/channel\/(UC[\w-]+)/)?.[1] || null;
+  const youtubeHref = card.querySelector(".c_title[href*='/channel/']")?.getAttribute("href") || "";
+  const youtubeId = youtubeHref.match(/\/channel\/(UC[\w-]+)/)?.[1];
+  if (youtubeId) return youtubeId;
+
+  const twitchHref = card.querySelector(".c_title[href*='twitch.tv/'], a[href*='twitch.tv/']")?.getAttribute("href") || "";
+  return getTwitchLogin(twitchHref);
+}
+
+function getTwitchLogin(link) {
+  const login = link.match(/twitch\.tv\/(?!videos\/)([A-Za-z0-9_]+)/)?.[1];
+  return login ? login.toLowerCase() : null;
 }
 
 function clean(value) {
@@ -164,7 +268,12 @@ function formatRelativeTime(date) {
 }
 
 function shouldShowStream(item) {
-  return !isFreeChat(item) && state.selectedMemberIds.has(item.channelId);
+  return !isFreeChat(item) && isSelectedChannel(item.channelId);
+}
+
+function isSelectedChannel(channelId) {
+  const memberId = VSPO_CHANNEL_MEMBER_ID_MAP[channelId.toLowerCase()] || channelId;
+  return state.selectedMemberIds.has(memberId);
 }
 
 function isFreeChat(item) {
@@ -192,19 +301,30 @@ function createCard(item) {
   card.rel = "noreferrer";
 
   const badgeLabel = item.isLive ? "LIVE" : "\u4e88\u5b9a";
+  const platformLabel = formatPlatform(item.platform);
   card.innerHTML = `
     <div class="thumb">
       <img src="${escapeHtml(item.thumbnail)}" alt="">
       <span class="badge ${item.isLive ? "" : "scheduled"}">${badgeLabel}</span>
     </div>
     <div class="stream-body">
-      <div class="member">${escapeHtml(item.member)}</div>
+      <div class="stream-head">
+        <div class="member">${escapeHtml(item.member)}</div>
+        <span class="platform ${escapeHtml(item.platform)}">${escapeHtml(platformLabel)}</span>
+      </div>
       <p class="title">${escapeHtml(item.title)}</p>
       <div class="meta">${escapeHtml(item.meta)}</div>
     </div>
   `;
 
   return card;
+}
+
+function formatPlatform(platform) {
+  return {
+    youtube: "YouTube",
+    twitch: "Twitch"
+  }[platform] || platform;
 }
 
 function updateActionBadge(count) {

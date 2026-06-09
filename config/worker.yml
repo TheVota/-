@@ -8,6 +8,9 @@ default: &default
   lives_check:
     youtube:
       - https://workername2.username.workers.dev
+    twitch:
+      - worker: https://anotherworker2.username.workers.dev
+        proxy: http://example.com:1234
   members_track:
     youtube:
       - https://workername3.username.workers.dev

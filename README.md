@@ -3,7 +3,7 @@
 VSPO Fan Schedule API is an unofficial Rails API server for tracking public
 VSPO! VTuber live stream information.
 
-This project is based on [YunzheZJU/non-stop-story](https://github.com/YunzheZJU/non-stop-story) and swaps the default seed data to VSPO! YouTube channels.
+This project is based on [YunzheZJU/non-stop-story](https://github.com/YunzheZJU/non-stop-story) and swaps the default seed data to VSPO! YouTube and Twitch channels.
 
 This repository is not affiliated with, endorsed by, or sponsored by VSPO!,
 Virtual Entertainment, Brave group, YouTube, or VTuber Live. Product names,
@@ -53,7 +53,7 @@ GraphQL endpoint:
 
 ## Seed Data
 
-`db/seeds.yml` contains the current VSPO! YouTube channel list used to initialize members and channels.
+`db/seeds.yml` contains the current VSPO! YouTube and Twitch channel list used to initialize members and channels.
 
 The list was generated from the public VTuber Live VSPO channel page on 2026-06-07:
 
@@ -61,7 +61,7 @@ https://vtuber-live.net/prod_ch_list?prd=vspo
 
 Current seed scope:
 
-- YouTube only
+- YouTube and confirmed Twitch channels
 - 32 VSPO! / VSPO! EN channels
 - All members marked active by default
 
@@ -91,9 +91,15 @@ The app expects workers for:
 lives_detect:
   youtube:
     - https://your-detect-worker.example
+  twitch:
+    - worker: https://your-twitch-detect-worker.example
+      proxy: http://your-proxy.example:1234
 lives_check:
   youtube:
     - https://your-check-worker.example
+  twitch:
+    - worker: https://your-twitch-check-worker.example
+      proxy: http://your-proxy.example:1234
 members_track:
   youtube:
     - https://your-member-worker.example

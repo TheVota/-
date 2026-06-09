@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Unofficial VSPO Live Status",
-  "description": "Unofficial fan-made popup for public VSPO! YouTube stream listings.",
-  "version": "0.1.0",
+  "description": "Unofficial fan-made popup for public VSPO! YouTube and Twitch stream listings.",
+  "version": "0.1.1",
   "permissions": [
     "alarms",
     "storage"
@@ -29,6 +29,7 @@
   },
   "host_permissions": [
     "https://vtuber-live.net/*",
-    "https://i.ytimg.com/*"
+    "https://i.ytimg.com/*",
+    "https://static-cdn.jtvnw.net/*"
   ]
 }

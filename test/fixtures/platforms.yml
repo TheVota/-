@@ -5,3 +5,6 @@ youtube:
 
 bilibili:
   platform: bilibili
+
+twitch:
+  platform: twitch

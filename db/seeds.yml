@@ -1,5 +1,6 @@
 platforms:
   - youtube
+  - twitch
 members:
   nazuna_kaga:
     name: 花芽なずな / Nazuna Kaga
@@ -9,6 +10,8 @@ members:
     graduated: false
     youtube:
       - UCiMG6VdScBabPhJ1ZtaVmbw
+    twitch:
+      - nazunakaga
   sumire_kaga:
     name: 花芽すみれ / Kaga Sumire
     avatar: https://yt3.ggpht.com/62gVOJZDVb-9pPCbljnoRlwqEuvcGk0pNl32GNi_GA_KQS3N7X6-B660Pk3crHh3zi1XSzHMNQ=s160-c-k-c0x00ffffff-no-rj
@@ -17,6 +20,8 @@ members:
     graduated: false
     youtube:
       - UCyLGcqYs7RsBb3L0SJfzGYA
+    twitch:
+      - kagasumire
   toto_kogara:
     name: 小雀とと / Toto Kogara
     avatar: https://yt3.ggpht.com/ytc/AIdro_lEifEusAxSkqQg12z_wUO1bGfGIqo9Vv4OYz6X5BhCIg=s160-c-k-c0x00ffffff-no-rj
@@ -33,6 +38,8 @@ members:
     graduated: false
     youtube:
       - UC5LyYg6cCA4yHEYvtUsir3g
+    twitch:
+      - uruhaichinose
   noa_kurumi:
     name: 胡桃のあ
     avatar: https://yt3.ggpht.com/P0TCuLWSv_bK-G6p7j-wY2XM6w78G8Z-vtZ-XxkuIXfjFuScBCL3_LLCl1W6dgdMe3GcikiskQ=s160-c-k-c0x00ffffff-no-rj
@@ -41,6 +48,8 @@ members:
     graduated: false
     youtube:
       - UCIcAj6WkJ8vZ7DeJVgmeqKw
+    twitch:
+      - 963noah
   qpi_kaminari:
     name: 神成きゅぴ / Kaminari Qpi
     avatar: https://yt3.ggpht.com/5IgSXAOfwIFU60tdD88_gdEDZBvJs-3u-ogu3VWWSpWepyN1H9n6Gdyvlgya5PuR0ARtfNl9=s160-c-k-c0x00ffffff-no-rj
@@ -49,6 +58,8 @@ members:
     graduated: false
     youtube:
       - UCMp55EbT_ZlqiMS3lCj01BQ
+    twitch:
+      - kaminariqpi
   met_komori:
     name: Met Channel / 小森めと
     avatar: https://yt3.ggpht.com/8km4MzJjHfYgZ7gbACC42-p2iwGFjmRFL-mppdpn4y35mIWhDTg2qVxmrGV1WQCqrjV7ZB9_Bw=s160-c-k-c0x00ffffff-no-rj
@@ -57,6 +68,8 @@ members:
     graduated: false
     youtube:
       - UCzUNASdzI4PV5SlqtYwAkKQ
+    twitch:
+      - met_komori
   mimi_tosaki:
     name: 兎咲ミミ / Tosaki Mimi
     avatar: https://yt3.ggpht.com/9cJ6zJabky32vTsNMD4NdQQrCIttzqpmC_kW55tKwJuh6OUiCs8MVziidVYfJOa9dBLlgcNwHw=s160-c-k-c0x00ffffff-no-rj
@@ -73,6 +86,8 @@ members:
     graduated: false
     youtube:
       - UCF_U2GCKHvDz52jWdizppIA
+    twitch:
+      - asumisena
   lisa_hanabusa:
     name: 英リサ.Hanabusa Lisa
     avatar: https://yt3.ggpht.com/ytc/AIdro_nDEKrUIjF9DlTu-bEc-DenqIj-md5YkUqhGhqwyBLBgQ=s160-c-k-c0x00ffffff-no-rj
@@ -81,6 +96,8 @@ members:
     graduated: false
     youtube:
       - UCurEA8YoqFwimJcAuSHU0MQ
+    twitch:
+      - lisahanabusa
   hinano_tachibana:
     name: 橘ひなの / Hinano Tachibana
     avatar: https://yt3.ggpht.com/qBHwrzfOske0YrfKhyd-tCBGcsoka2h1tHdX09EOdx7uAmAYpYeIEldA-aYYhBROPvADi9_4FA=s160-c-k-c0x00ffffff-no-rj
@@ -89,6 +106,8 @@ members:
     graduated: false
     youtube:
       - UCvUc0m317LWTTPZoBQV479A
+    twitch:
+      - hinanotachiba7
   ren_kisaragi:
     name: 如月れん -Ren kisaragi-
     avatar: https://yt3.ggpht.com/l2mkMKBJ9OKCEKuY2HhDx_i0oKYWvjXQontI0pi3_AZwisv6FOQArd13bNpU4ko_rMhfdR-v7zU=s160-c-k-c0x00ffffff-no-rj
@@ -97,6 +116,8 @@ members:
     graduated: false
     youtube:
       - UCGWa1dMU_sDCaRQjdabsVgg
+    twitch:
+      - ren_kisaragi__
   beni_yakumo:
     name: 八雲べに
     avatar: https://yt3.ggpht.com/3DKslDQ-fYLyIA5WNS3cl3Hesu6QRWD74C1kU1MYgoLtzenCSdkz1H4mOmFJ3HT_3ZlhNfFR=s160-c-k-c0x00ffffff-no-rj
@@ -105,6 +126,8 @@ members:
     graduated: false
     youtube:
       - UCjXBuHmWkieBApgBhDuJMMQ
+    twitch:
+      - yakumobeni
   runa_shinomiya:
     name: 紫宮るな /shinomiya runa
     avatar: https://yt3.ggpht.com/Rgt9lslf7OZntxcW8A9mMFWDdXTG1IxqCq4tZ14Rd7rB1rm4gxQZPTc5kM9LdGTPmXGWkfyzWw=s160-c-k-c0x00ffffff-no-rj
@@ -113,6 +136,8 @@ members:
     graduated: false
     youtube:
       - UCD5W21JqNMv_tV9nfjvF9sw
+    twitch:
+      - shinomiya_runa
   ema_aizawa:
     name: 藍沢エマ / Aizawa Ema
     avatar: https://yt3.ggpht.com/5IXJSJa8Qok0rszVjkdgFUj_9yKqYt82haI-hxUroYMaBdsgcmDO7bUYle30GfTnMjg96Jk9zA=s160-c-k-c0x00ffffff-no-rj
@@ -121,6 +146,8 @@ members:
     graduated: false
     youtube:
       - UCPkKpOHxEDcwmUAnRpIu-Ng
+    twitch:
+      - emtsmaru
   tsuna_nekota:
     name: 猫汰つな / Nekota Tsuna
     avatar: https://yt3.ggpht.com/t8oKW3u3BqieOUZ4j3d_qxV2fBEypIpVkq3vY2SYlOD2gblH-4fSjBOGW9O5eiOagOhhuUzA=s160-c-k-c0x00ffffff-no-rj
@@ -129,6 +156,8 @@ members:
     graduated: false
     youtube:
       - UCIjdfjcSaEgdjwbgjxC3ZWg
+    twitch:
+      - tsuna_nekota
   ramune_shiranami:
     name: 白波らむね / Shiranami Ramune
     avatar: https://yt3.ggpht.com/zkGtVL-NEnjNR53Bf02AeO5AlzwxXOcrTBbaY62YY9wQoQh7S13ASJdMGMsPXyw2U2zxNFUysg=s160-c-k-c0x00ffffff-no-rj
@@ -137,6 +166,8 @@ members:
     graduated: false
     youtube:
       - UC61OwuYOVuKkpKnid-43Twg
+    twitch:
+      - ramuneshiranami
   akari_yumeno:
     name: Akari ch.夢野あかり
     avatar: https://yt3.ggpht.com/hW-Z9l93zqxXn56bdRyo4OgVHn9XIMq7T991dsmnwJ-LTWACf306bVYRb8GSbWEATM3UNhqklw=s160-c-k-c0x00ffffff-no-rj
@@ -145,6 +176,8 @@ members:
     graduated: false
     youtube:
       - UCS5l_Y0oMVTjEos2LuyeSZQ
+    twitch:
+      - akarindao
   kuromu_yano:
     name: 夜乃くろむ / Yano Kuromu
     avatar: https://yt3.ggpht.com/1akMwH-5NFyiA_cSCHjkOi-h0ZygMVcxMdRHYmCgBtjfha__trYziilH92BCAYgYZQBGOWynsg=s160-c-k-c0x00ffffff-no-rj
@@ -153,6 +186,8 @@ members:
     graduated: false
     youtube:
       - UCX4WL24YEOUYd7qDsFSLDOw
+    twitch:
+      - kuromuyano
   kokage_tsumugi:
     name: 紡木こかげ
     avatar: https://yt3.ggpht.com/k5cVF6C4_wfjYaf3iNU9ZfqTUZp6nwk_f4_Jid3VPIMJcjQj4Zll31sdE0J3yP1HEJoNtl0gyho=s160-c-k-c0x00ffffff-no-rj
@@ -161,6 +196,8 @@ members:
     graduated: false
     youtube:
       - UC-WX1CXssCtCtc2TNIRnJzg
+    twitch:
+      - kokagetsumugi
   yuuhi_sendo:
     name: 千燈ゆうひ
     avatar: https://yt3.ggpht.com/LwrClvbMurf6c81aevjCuKoy8CKwQbuChZlNExzHHeWfaeQQ1kQpbMZPjqBu24TmVeg0RBH7Cg=s160-c-k-c0x00ffffff-no-rj
@@ -169,6 +206,8 @@ members:
     graduated: false
     youtube:
       - UCuDY3ibSP2MFRgf7eo3cojg
+    twitch:
+      - sendo_yuuhi
   arya_kuroha:
     name: Arya Kuroha 【VSPO! EN】
     avatar: https://yt3.ggpht.com/O2vuL-OawwrhFQX3oiiVSUey9B3wJ4IBS2q5cPTb-igxsFnUFTSc2vtXSi8nnFdP3Vgik1hq1DM=s160-c-k-c0x00ffffff-no-rj
@@ -177,6 +216,8 @@ members:
     graduated: false
     youtube:
       - UCLlJpxXt6L5d-XQ0cDdIyDQ
+    twitch:
+      - aryakuroha
   jira_jisaki:
     name: Jira Jisaki 【VSPO! EN】
     avatar: https://yt3.ggpht.com/9fK7tc3-fqWBvNK9zMoaKevb3THmK3JRQCkkJrR-fdpSFQIJNhEhaxwlm1H9S3nn4AG72nq1=s160-c-k-c0x00ffffff-no-rj
@@ -185,6 +226,8 @@ members:
     graduated: false
     youtube:
       - UCeCWj-SiJG9SWN6wGORiLmw
+    twitch:
+      - jirajisaki
   remia_aotsuki:
     name: Remia Aotsuki 【VSPO! EN】
     avatar: https://yt3.ggpht.com/3ijdlJDJlBXXM_tF00irAxHiltUx4TcDLLGr739wr4dXhUODAuC9CJHI_plUeSB1kQKwzstaYg=s160-c-k-c0x00ffffff-no-rj
@@ -193,6 +236,8 @@ members:
     graduated: false
     youtube:
       - UCCra1t-eIlO3ULyXQQMD9Xw
+    twitch:
+      - remiaaotsuki
   narin_mikure:
     name: Narin Mikure【VSPO! EN】
     avatar: https://yt3.ggpht.com/7-NgqeR4Woc8D_SNKQk3lAZqFYYDy0U6Bi2mgORrJPbAUYuCnMjey2Kyh6NxQZ2hG-IaR2Mt=s160-c-k-c0x00ffffff-no-rj
@@ -201,6 +246,8 @@ members:
     graduated: false
     youtube:
       - UCKSpM183c85d5V2cW5qaUjA
+    twitch:
+      - narinmikure
   riko_solari:
     name: Riko Solari【VSPO! EN】
     avatar: https://yt3.ggpht.com/bGho6eDQPk7uQl3wvAPi2vt-upGXZr99KDjaHiWoQBKstD75_Em7GvT7svwM98WS1t6YHAjXBHc=s160-c-k-c0x00ffffff-no-rj
@@ -209,6 +256,8 @@ members:
     graduated: false
     youtube:
       - UC7Xglp1fske9zmRe7Oj8YyA
+    twitch:
+      - rikosolari
   hanabi_choya:
     name: 蝶屋はなび / Choya Hanabi
     avatar: https://yt3.ggpht.com/N7qEUQMbq8z1lQdp4WBUz3vQ83gYiYmPt-alI5K1xMYnOh4uAxuQlUVPneZQKetzACogh6E_qA=s160-c-k-c0x00ffffff-no-rj
@@ -217,6 +266,8 @@ members:
     graduated: false
     youtube:
       - UCL9hJsdk9eQa0IlWbFB2oRg
+    twitch:
+      - choyahanabi
   moka_amayui:
     name: 甘結もか / Amayui Moka
     avatar: https://yt3.ggpht.com/e_Vc-qiRBWmj9PaysPGhh9b2bn5YDLs-FhmqDwZTiog6umosQzQEa7phbJwz4eaZsGwzfFze=s160-c-k-c0x00ffffff-no-rj
@@ -233,6 +284,8 @@ members:
     graduated: false
     youtube:
       - UCp_3ej2br9l9L1DSoHVDZGw
+    twitch:
+      - erissuzukami
   juno_umezono:
     name: Juno Umezono【VSPO! EN】
     avatar: https://yt3.ggpht.com/bztupxiQMfCNoxlX5ir_3qRpCzGPEzoTOs7gSq6jqgZ-oRAtbyS_seR_Jd9NlT0c0hUzS-kw=s160-c-k-c0x00ffffff-no-rj
@@ -249,6 +302,8 @@ members:
     graduated: false
     youtube:
       - UC2xXx1m1jeL0W84_0jTg-Yw
+    twitch:
+      - saineginjo
   chise_tatsumaki:
     name: 龍巻ちせ / Tatsumaki Chise
     avatar: https://yt3.ggpht.com/iY4fKYP5hjgVTNz69v9pXqmndDfJgYj3YSA47zsDeROBIp3tzxgZQqG3x6W6UZFQum64Dse2b5k=s160-c-k-c0x00ffffff-no-rj

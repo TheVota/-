@@ -14,16 +14,24 @@ class ChannelTest < ActiveSupport::TestCase
       platform: platforms(:bilibili),
       member: members(:test_1),
     }
+    @channel_twitch = {
+      channel: 'twitch_login_123',
+      platform: platforms(:twitch),
+      member: members(:test_1),
+    }
   end
 
   test 'should succeed to save' do
     youtube = Channel.new @channel_youtube
     bilibili = Channel.new @channel_bilibili
+    twitch = Channel.new @channel_twitch
 
     assert youtube.valid?
     assert bilibili.valid?
+    assert twitch.valid?
     assert youtube.save
     assert bilibili.save
+    assert twitch.save
   end
 
   test 'should succeed to save optional member' do
@@ -36,11 +44,14 @@ class ChannelTest < ActiveSupport::TestCase
   test 'should fail to save invalid format' do
     youtube = Channel.new @channel_youtube.merge(channel: '123456')
     bilibili = Channel.new @channel_bilibili.merge(channel: 'UC123456')
+    twitch = Channel.new @channel_twitch.merge(channel: 'invalid-login')
 
     assert_not youtube.valid?
     assert_not bilibili.valid?
+    assert_not twitch.valid?
     assert_not youtube.save
     assert_not bilibili.save
+    assert_not twitch.save
   end
 
   test 'should fail to save nil platform' do
